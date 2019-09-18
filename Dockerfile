@@ -21,6 +21,7 @@ RUN curl https://sh.rustup.rs -sSf | \
 ENV PATH=/root/.cargo/bin:$PATH
 
 RUN cargo --version && \
+    cargo +nightly --version && \
     rustc --version && \
     rustup --version && \
     rustup component add rustfmt --toolchain nightly && \
