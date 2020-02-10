@@ -12,8 +12,11 @@ RUN apt update && \
     curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     apt-get autoremove -y && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    rustup update nightly && \
+    rm -rf /var/lib/apt/lists/*
+
+ENV PATH=/root/.cargo/bin:$PATH
+
+RUN rustup update nightly && \
     rustup component add rustfmt --toolchain nightly && \
     rustup target add wasm32-unknown-unknown --toolchain nightly && \
     cargo +nightly install --git https://github.com/alexcrichton/wasm-gc --force && \
