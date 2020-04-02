@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update && \
     apt install cmake pkg-config git gcc build-essential git clang \
-        libclang-dev curl ca-certificates -y --no-install-recommends && \
+        libclang-dev curl ca-certificates libssl-dev -y --no-install-recommends && \
     curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
