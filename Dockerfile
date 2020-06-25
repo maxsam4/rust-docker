@@ -7,7 +7,7 @@ LABEL version="latest"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update && \
-    apt install cmake pkg-config git gcc build-essential git clang \
+    apt install cmake pkg-config git gcc build-essential git clang openssh-client \
         libclang-dev curl ca-certificates libssl-dev -y --no-install-recommends && \
     curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
@@ -20,7 +20,9 @@ RUN apt update && \
 
 ENV PATH=/root/.cargo/bin:$PATH
 
-RUN rustup update nightly && \
+RUN rustup update nightly-2020-04-17 && \
+    cargo install cargo-tarpaulin && \
+    mv ~/.rustup/toolchains/nightly-2020-04-17-x86_64-unknown-linux-gnu ~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu && \
     rustup component add rustfmt --toolchain nightly && \
     rustup component add clippy --toolchain nightly && \
     rustup target add wasm32-unknown-unknown --toolchain nightly && \
