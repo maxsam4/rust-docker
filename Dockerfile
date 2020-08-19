@@ -25,8 +25,9 @@ RUN rustup update nightly-2020-07-26 && \
     rustup component add clippy --toolchain nightly-2020-07-26 && \
     rustup target add wasm32-unknown-unknown --toolchain nightly-2020-07-26 && \
     cargo +nightly-2020-07-26 install --git https://github.com/alexcrichton/wasm-gc --force && \
-    ln -s ~/.rustup/toolchains/nightly-2020-04-17-x86_64-unknown-linux-gnu ~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu && \
+    ln -s ~/.rustup/toolchains/nightly-2020-07-26-x86_64-unknown-linux-gnu ~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu && \
     cargo --version && \
+    cargo +nightly --version && \
     cargo +nightly-2020-07-26 --version && \
     nodejs --version
     
